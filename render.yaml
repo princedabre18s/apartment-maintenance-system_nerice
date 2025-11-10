@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: apartment-maintenance-backend
+    env: python
+    region: oregon
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: PG_HOST
+        sync: false
+      - key: PG_DATABASE
+        sync: false
+      - key: PG_USER
+        sync: false
+      - key: PG_PASSWORD
+        sync: false
+      - key: PG_SSLMODE
+        value: require
+      - key: PG_PORT
+        value: 5432
+      - key: SECRET_KEY
+        generateValue: true
+      - key: API_HOST
+        value: 0.0.0.0
+      - key: ENVIRONMENT
+        value: production
