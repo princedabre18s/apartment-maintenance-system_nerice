@@ -34,7 +34,13 @@ app = FastAPI(
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.frontend_url, "http://localhost:5173", "http://localhost:3000"],
+    allow_origins=[
+        settings.frontend_url,
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://apartment-maintenance-system-nerice.netlify.app",
+        "https://*.netlify.app"  # Allow all Netlify preview URLs
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
